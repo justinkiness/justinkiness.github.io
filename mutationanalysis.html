@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+
+<html>
+
+<title>Mutation Analysis</title>
+
+<header>
+    <a href="./home.html">Home</a>
+    <a href="./sarscov2.html">SARS-CoV-2</a>
+    <a href="./ace2receptor.html">ACE 2 Receptor</a>
+    <a href="./contactingresidues.html">Contacting Residues</a>
+    <a href="./mutationanalysis.html">Mutation Analysis</a>
+    <a href="./aboutus.html">About Us</a>
+
+    <h1>Mutation Analysis</h1>
+</header>
+
+<body>
+    <form>
+
+            SARS-CoV-2 Spike Protein Contact Residue:
+            
+        <select id="contact" onchange="chooseContact(); chooseMutation()">
+            <option></option>
+            <option>Y449</option>
+            <option>Y453</option>
+            <option>L455</option>
+            <option>F456</option>
+            <option>Y473</option>
+            <option>A475</option>
+            <option>F486</option>
+            <option>N487</option>
+            <option>C488</option>
+            <option>Y489</option>
+            <option>F490</option>
+            <option>Q493</option>
+            <option>S494</option>
+            <option>G496</option>
+            <option>Q498</option>
+            <option>P499</option>
+            <option>T500</option>
+            <option>N501</option>
+            <option>G502</option>
+            <option>V503</option>
+            <option>Y505</option>
+        </select>
+        <br>
+        <br>
+    </form>
+
+    <table border=1>
+        <tr>
+            <th rowspan=2>Amino Acid</th>
+            <th colspan=21>ACE2 Receptor Binding Domain Contact Residues</th>
+            <th rowspan=2>Parameter</th>
+        </tr>
+
+        <tr>
+            <th>Q24</th>
+            <th>T27</th>
+            <th>F28</th>
+            <th>D30</th>
+            <th>K31</th>
+            <th>H34</th>
+            <th>E35</th>
+            <th>E37</th>
+            <th>D38</th>
+            <th>Y41</th>
+            <th>Q42</th>
+            <th>L45</th>
+            <th>M82</th>
+            <th>Y83</th>
+            <th>T324</th>
+            <th>N330</th>
+            <th>G352</th>
+            <th>K353</th>
+            <th>G354</th>
+            <th>D355</th>
+            <th>R357</th>
+        </tr>
+
+        <tr>
+            <td id="rescon" rowspan=2></td>
+            <td id="resiQ24"></td>
+            <td id="resiT27"></td>
+            <td id="resiF28"></td>
+            <td id="resiD30"></td>
+            <td id="resiK31"></td>
+            <td id="resiH34"></td>
+            <td id="resiE35"></td>
+            <td id="resiE37"></td>
+            <td id="resiD38"></td>
+            <td id="resiY41"></td>
+            <td id="resiQ42"></td>
+            <td id="resiL45"></td>
+            <td id="resiM82"></td>
+            <td id="resiY83"></td>
+            <td id="resiT324"></td>
+            <td id="resiN330"></td>
+            <td id="resiG352"></td>
+            <td id="resiK353"></td>
+            <td id="resiG354"></td>
+            <td id="resiD355"></td>
+            <td id="resiR357"></td>
+            <td>Interaction Type</td>
+        </tr>
+
+        <tr>
+            <td id="reseQ24"></td>
+            <td id="reseT27"></td>
+            <td id="reseF28"></td>
+            <td id="reseD30"></td>
+            <td id="reseK31"></td>
+            <td id="reseH34"></td>
+            <td id="reseE35"></td>
+            <td id="reseE37"></td>
+            <td id="reseD38"></td>
+            <td id="reseY41"></td>
+            <td id="reseQ42"></td>
+            <td id="reseL45"></td>
+            <td id="reseM82"></td>
+            <td id="reseY83"></td>
+            <td id="reseT324"></td>
+            <td id="reseN330"></td>
+            <td id="reseG352"></td>
+            <td id="reseK353"></td>
+            <td id="reseG354"></td>
+            <td id="reseD355"></td>
+            <td id="reseR357"></td>
+            <td>Surface Potential (kJ/mol)</td>
+        </tr>
+    </table>
+
+    <br>
+    <form>
+
+            Mutate Residue to:
+            
+        <select id="mutation" onchange="chooseMutation()">
+            <option></option>
+            <option>ALA (A)</option>
+            <option>ARG (R)</option>
+            <option>ASN (N)</option>
+            <option>ASP (D)</option>
+            <option>CYS (C)</option>
+            <option>GLN (Q)</option>
+            <option>GLU (E)</option>
+            <option>GLY (G)</option>
+            <option>HIS (H)</option>
+            <option>ILE (I)</option>
+            <option>LEU (L)</option>
+            <option>LYS (K)</option>
+            <option>MET (M)</option>
+            <option>PHE (F)</option>
+            <option>PRO (P)</option>
+            <option>SER (S)</option>
+            <option>THR (T)</option>
+            <option>TRP (W)</option>
+            <option>TYR (Y)</option>
+            <option>VAL (V)</option>
+        </select>
+        <br>
+        <br>
+    </form>
+
+    <table border=1>
+        <tr>
+            <th rowspan=2>Amino Acid</th>
+            <th colspan=21>ACE2 Receptor Binding Domain Contact Residues</th>
+            <th rowspan=2>Parameter</th>
+        </tr>
+
+        <tr>
+            <th>Q24</th>
+            <th>T27</th>
+            <th>F28</th>
+            <th>D30</th>
+            <th>K31</th>
+            <th>H34</th>
+            <th>E35</th>
+            <th>E37</th>
+            <th>D38</th>
+            <th>Y41</th>
+            <th>Q42</th>
+            <th>L45</th>
+            <th>M82</th>
+            <th>Y83</th>
+            <th>T324</th>
+            <th>N330</th>
+            <th>G352</th>
+            <th>K353</th>
+            <th>G354</th>
+            <th>D355</th>
+            <th>R357</th>
+        </tr>
+
+        <tr>
+            <td id="resmut" rowspan=2></td>
+            <td id="resiQ24"></td>
+            <td id="resiT27"></td>
+            <td id="resiF28"></td>
+            <td id="resiD30"></td>
+            <td id="resiK31"></td>
+            <td id="resiH34"></td>
+            <td id="resiE35"></td>
+            <td id="resiE37"></td>
+            <td id="resiD38"></td>
+            <td id="resiY41"></td>
+            <td id="resiQ42"></td>
+            <td id="resiL45"></td>
+            <td id="resiM82"></td>
+            <td id="resiY83"></td>
+            <td id="resiT324"></td>
+            <td id="resiN330"></td>
+            <td id="resiG352"></td>
+            <td id="resiK353"></td>
+            <td id="resiG354"></td>
+            <td id="resiD355"></td>
+            <td id="resiR357"></td>
+            <td>Interaction Type</td>
+        </tr>
+
+        <tr>
+            <td id="reseQ24"></td>
+            <td id="reseT27"></td>
+            <td id="reseF28"></td>
+            <td id="reseD30"></td>
+            <td id="reseK31"></td>
+            <td id="reseH34"></td>
+            <td id="reseE35"></td>
+            <td id="reseE37"></td>
+            <td id="reseD38"></td>
+            <td id="reseY41"></td>
+            <td id="reseQ42"></td>
+            <td id="reseL45"></td>
+            <td id="reseM82"></td>
+            <td id="reseY83"></td>
+            <td id="reseT324"></td>
+            <td id="reseN330"></td>
+            <td id="reseG352"></td>
+            <td id="reseK353"></td>
+            <td id="reseG354"></td>
+            <td id="reseD355"></td>
+            <td id="reseR357"></td>
+            <td>Surface Potential (kJ/mol)</td>
+        </tr>
+    </table>
+
+    <script>
+    function chooseContact() {
+        var contact = document.getElementById("contact");
+        document.getElementById("rescon").innerHTML = contact.options[contact.selectedIndex].text;
+
+        switch (contact.options[contact.selectedIndex].text) {
+
+        case "Y449":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "I, H";
+            eD38 = "0.694";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "I";
+            eQ42 = "-0.036";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "Y453":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "I";
+            eH34 = "-0.305";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "L455":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "I";
+            eD30 = "0.316";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "I";
+            eH34 = "0.029";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "F456":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "I";
+            eD30 = "0.118";
+            iK31 = "I";
+            eK31 = "0.259";
+            iH34 = "I";
+            eH34 = "-0.141";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "Y473":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "I";
+            eT27 = "0.492";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "A475":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "I";
+            eT27 = "0.002";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "F486":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "NP";
+            eM82 = "-0.501";
+            iY83 = "Ar";
+            eY83 = "-0.335";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "N487":
+            iQ24 = "P";
+            eQ24 = "-0.187";
+            iT27 = "P";
+            eT27 = "-0.018";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "C488":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "I";
+            eK31 = "1.115";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "Y489":
+            iQ24 = "I";
+            eQ24 = "-0.036";
+            iT27 = "I, H";
+            eT27 = "0.492";
+            iF28 = "Ar";
+            eF28 = "-0.335";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "I";
+            eK31 = "-0.294";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "Ar";
+            eY83 = "0.211";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "F490":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "I";
+            eK31 = "0.259";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "Q493":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "P, H";
+            eH34 = "0.247";
+            iE35 = "P";
+            eE35 = "-0.728";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "S494":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "P";
+            eH34 = "0.080";
+            iE35 = "P";
+            eE35 = "-0.207";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "P";
+            eD38 = "-0.565";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "G496":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "I";
+            eD38 = "-0.336";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "I";
+            eK353 = "0.065";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "Q498":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "I";
+            eY41 = "-0.036";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "P";
+            eK353 = "-0.181";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "P499":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "I";
+            eN330 = "0.109";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "T500":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "I, H";
+            eY41 = "0.492";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "I";
+            eL45 = "0.075";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "P";
+            eN330 = "-0.018";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "P, H";
+            eD355 = "-0.433";
+            iR357 = "P";
+            eR357 = "0.250";
+            break;
+
+        case "N501":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "I";
+            eY41 = "-0.491";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "I";
+            eG352 = "-0.097";
+            iK353 = "P";
+            eK353 = "0.222";
+            iG354 = "I";
+            eG354 = "-0.097";
+            iD355 = "P";
+            eD355 = "-0.534";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "G502":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "I";
+            eT324 = "-0.106";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "I";
+            eK353 = "0.065";
+            iG354 = "I";
+            eG354 = "-0.068";
+            iD355 = "I";
+            eD355 = "-0.336";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "V503":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "I";
+            eT324 = "0.251";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        case "Y505":
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "I";
+            eE37 = "-0.004";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "I";
+            eG352 = "0.121";
+            iK353 = "I";
+            eK353 = "-0.294";
+            iG354 = "I";
+            eG354 = "0.121";
+            iD355 = "I";
+            eD355 = "0.694";
+            iR357 = "";
+            eR357 = "";
+
+        default:
+            iQ24 = "";
+            eQ24 = "";
+            iT27 = "";
+            eT27 = "";
+            iF28 = "";
+            eF28 = "";
+            iD30 = "";
+            eD30 = "";
+            iK31 = "";
+            eK31 = "";
+            iH34 = "";
+            eH34 = "";
+            iE35 = "";
+            eE35 = "";
+            iE37 = "";
+            eE37 = "";
+            iD38 = "";
+            eD38 = "";
+            iY41 = "";
+            eY41 = "";
+            iQ42 = "";
+            eQ42 = "";
+            iL45 = "";
+            eL45 = "";
+            iM82 = "";
+            eM82 = "";
+            iY83 = "";
+            eY83 = "";
+            iT324 = "";
+            eT324 = "";
+            iN330 = "";
+            eN330 = "";
+            iG352 = "";
+            eG352 = "";
+            iK353 = "";
+            eK353 = "";
+            iG354 = "";
+            eG354 = "";
+            iD355 = "";
+            eD355 = "";
+            iR357 = "";
+            eR357 = "";
+            break;
+
+        }
+
+        document.getElementById("resiQ24").innerHTML = iQ24;
+        document.getElementById("reseQ24").innerHTML = eQ24;
+        document.getElementById("resiT27").innerHTML = iT27;
+        document.getElementById("reseT27").innerHTML = eT27;
+        document.getElementById("resiF28").innerHTML = iF28;
+        document.getElementById("reseF28").innerHTML = eF28;
+        document.getElementById("resiD30").innerHTML = iD30;
+        document.getElementById("reseD30").innerHTML = eD30;
+        document.getElementById("resiK31").innerHTML = iK31;
+        document.getElementById("reseK31").innerHTML = eK31;
+        document.getElementById("resiH34").innerHTML = iH34;
+        document.getElementById("reseH34").innerHTML = eH34;
+        document.getElementById("resiE35").innerHTML = iE35;
+        document.getElementById("reseE35").innerHTML = eE35;
+        document.getElementById("resiE37").innerHTML = iE37;
+        document.getElementById("reseE37").innerHTML = eE37;
+        document.getElementById("resiD38").innerHTML = iD38;
+        document.getElementById("reseD38").innerHTML = eD38;
+        document.getElementById("resiY41").innerHTML = iY41;
+        document.getElementById("reseY41").innerHTML = eY41;
+        document.getElementById("resiQ42").innerHTML = iQ42;
+        document.getElementById("reseQ42").innerHTML = eQ42;
+        document.getElementById("resiL45").innerHTML = iL45;
+        document.getElementById("reseL45").innerHTML = eL45;
+        document.getElementById("resiM82").innerHTML = iM82;
+        document.getElementById("reseM82").innerHTML = eM82;
+        document.getElementById("resiY83").innerHTML = iY83;
+        document.getElementById("reseY83").innerHTML = eY83;
+        document.getElementById("resiT324").innerHTML = iT324;
+        document.getElementById("reseT324").innerHTML = eT324;
+        document.getElementById("resiN330").innerHTML = iN330;
+        document.getElementById("reseN330").innerHTML = eN330;
+        document.getElementById("resiG352").innerHTML = iG352;
+        document.getElementById("reseG352").innerHTML = eG352;
+        document.getElementById("resiK353").innerHTML = iK353;
+        document.getElementById("reseK353").innerHTML = eK353;
+        document.getElementById("resiG354").innerHTML = iG354;
+        document.getElementById("reseG354").innerHTML = eG354;
+        document.getElementById("resiD355").innerHTML = iD355;
+        document.getElementById("reseD355").innerHTML = eD355;
+        document.getElementById("resiR357").innerHTML = iR357;
+        document.getElementById("reseR357").innerHTML = eR357;
+    }
+
+    function chooseMutation() {
+        var contact = document.getElementById("contact");
+        var mutation = document.getElementById("mutation");
+
+        switch (mutation.options[mutation.selectedIndex].text) {
+
+        case "ALA (A)":
+          mut = contact.options[contact.selectedIndex].text + "A";
+          break;
+
+        case "ARG (R)":
+          mut = contact.options[contact.selectedIndex].text + "R";
+          break;
+
+        case "ASN (N)":
+          mut = contact.options[contact.selectedIndex].text + "N";
+          break;
+
+        case "ASP (D)":
+          mut = contact.options[contact.selectedIndex].text + "D";
+          break;
+
+        case "CYS (C)":
+          mut = contact.options[contact.selectedIndex].text + "C";
+          break;
+
+        case "GLN (Q)":
+          mut = contact.options[contact.selectedIndex].text + "Q";
+          break;
+
+        case "GLU (E)":
+          mut = contact.options[contact.selectedIndex].text + "E";
+          break;
+
+        case "GLY (G)":
+          mut = contact.options[contact.selectedIndex].text + "G";
+          break;
+
+        case "HIS (H)":
+          mut = contact.options[contact.selectedIndex].text + "H";
+          break;
+
+        case "ILE (I)":
+          mut = contact.options[contact.selectedIndex].text + "I";
+          break;
+
+        case "LEU (L)":
+          mut = contact.options[contact.selectedIndex].text + "L";
+          break;
+
+        case "LYS (K)":
+          mut = contact.options[contact.selectedIndex].text + "K";
+          break;
+
+        case "MET (M)":
+          mut = contact.options[contact.selectedIndex].text + "M";
+          break;
+
+        case "PHE (F)":
+          mut = contact.options[contact.selectedIndex].text + "F";
+          break;
+
+        case "PRO (P)":
+          mut = contact.options[contact.selectedIndex].text + "P";
+          break;
+
+        case "SER (S)":
+          mut = contact.options[contact.selectedIndex].text + "S";
+          break;
+
+        case "THR (T)":
+          mut = contact.options[contact.selectedIndex].text + "T";
+          break;
+
+        case "TRP (W)":
+          mut = contact.options[contact.selectedIndex].text + "W";
+          break;
+
+        case "TYR (Y)":
+          mut = contact.options[contact.selectedIndex].text + "Y";
+          break;
+
+        case "VAL (V)":
+          mut = contact.options[contact.selectedIndex].text + "V";
+          break;
+
+        default:
+          mut = "";
+          break;
+
+        }
+
+        document.getElementById("resmut").innerHTML = mut;
+    }
+
+    </script>
+
+</body>
+
+</html>
+
